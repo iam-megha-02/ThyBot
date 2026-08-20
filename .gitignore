@@ -1,0 +1,26 @@
+# Python junk
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.pkl
+
+# VS Code settings
+.vscode/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Built artifacts (regenerate via scripts/build_knowledge_base.py)
+data/clinical_index/
+
+# Runtime trace log (see utils/observability.py)
+data/traces.jsonl
+
+# Local database files
+*.db
+
+# OS junk
+.DS_Store
+Thumbs.db

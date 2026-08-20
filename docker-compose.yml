@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: thybot
+      POSTGRES_PASSWORD: thybot
+      POSTGRES_DB: thybot
+    ports:
+      - "5432:5432"
+    volumes:
+      - thybot_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U thybot"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    environment:
+      # "postgres", not "localhost" — inside the Compose network,
+      # services reach each other by service name, not by the
+      # host-facing address .env uses for local (non-Docker) dev.
+      DATABASE_URL: "postgresql://thybot:thybot@postgres:5432/thybot"
+    env_file:
+      - .env  # supplies GROQ_API_KEY; DATABASE_URL above overrides the .env value
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  thybot_pg_data:
