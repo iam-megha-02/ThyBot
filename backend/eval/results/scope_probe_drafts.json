@@ -1,0 +1,211 @@
+{
+  "note": "Exploratory development probes, including the previously observed acne failure; not an independent test set or part of the reviewed 100 cases. Positive excerpts verified against PDFs; policy labels await user review. Routing scores do not establish answer correctness.",
+  "cases": [
+    {
+      "id": "SCOPE_DRAFT_01",
+      "query": "What does the butterfly-shaped gland in the lower front of the neck do?",
+      "source_file": "Goiter_brochure.pdf",
+      "pdf_page": 1,
+      "section": "WHAT IS THE THYROID GLAND?",
+      "supporting_excerpt": "Thyroid hormones help the body use energy, stay warm and keep the brain, heart, muscles, and other organs working as they should.",
+      "has_scope_keyword": false,
+      "review_status": "draft_for_user_review",
+      "expected_behavior": "answer",
+      "scope_score": 0.580651044845581,
+      "top_retrieved_source": "HormoneTreatment_brochure.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "proceed"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_02",
+      "query": "What is thyroglobulin used to monitor after cancer surgery?",
+      "source_file": "thyroid_function_tests_faq.pdf",
+      "pdf_page": 1,
+      "section": "THYROGLOBULIN",
+      "supporting_excerpt": "Tg is useful to monitor patients for recurrent thyroid cancer after their thyroid has been removed.",
+      "has_scope_keyword": false,
+      "review_status": "draft_for_user_review",
+      "expected_behavior": "answer",
+      "scope_score": 0.5660144090652466,
+      "top_retrieved_source": "thyroid_function_tests_faq.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "proceed"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_03",
+      "query": "Can the gland at the front of the neck get larger even when it makes normal amounts of hormone?",
+      "source_file": "Goiter_brochure.pdf",
+      "pdf_page": 1,
+      "section": "WHAT ARE THE SYMPTOMS OF A GOITER?",
+      "supporting_excerpt": "the presence of a goiter does not necessarily mean that the thyroid gland is malfunctioning.",
+      "expected_behavior": "answer",
+      "review_status": "draft_for_user_review",
+      "has_scope_keyword": false,
+      "scope_score": 0.47341543436050415,
+      "top_retrieved_source": "Goiter_brochure.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "proceed"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_04",
+      "query": "Why might an enlarged hormone-producing neck gland stay large even after hormone levels return to normal?",
+      "source_file": "Goiter_brochure.pdf",
+      "pdf_page": 2,
+      "section": "HOW IS A GOITER TREATED?",
+      "supporting_excerpt": "sometimes there is too much scar tissue in the gland to allow it to get much smaller.",
+      "expected_behavior": "answer",
+      "review_status": "draft_for_user_review",
+      "has_scope_keyword": false,
+      "scope_score": 0.48905253410339355,
+      "top_retrieved_source": "Goiter_brochure.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "proceed"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_05",
+      "query": "Why do blood hormone levels rise briefly and then fall rapidly after taking Cytomel?",
+      "source_file": "HormoneTreatment_brochure.pdf",
+      "pdf_page": 2,
+      "section": "WHAT ABOUT T3?",
+      "supporting_excerpt": "T3 has a very short life span in the body",
+      "expected_behavior": "answer",
+      "review_status": "draft_for_user_review",
+      "has_scope_keyword": false,
+      "scope_score": 0.5280559062957764,
+      "top_retrieved_source": "HormoneTreatment_brochure.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "proceed"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_06",
+      "query": "Why can hormone levels be harder to keep stable with Armour than with a consistent synthetic preparation?",
+      "source_file": "HormoneTreatment_brochure.pdf",
+      "pdf_page": 2,
+      "section": "WHAT ABOUT NATURAL THYROID HORMONES?",
+      "supporting_excerpt": "making it harder to keep blood levels stable throughout the day.",
+      "expected_behavior": "answer",
+      "review_status": "draft_for_user_review",
+      "has_scope_keyword": false,
+      "scope_score": 0.419796884059906,
+      "top_retrieved_source": "HormoneTreatment_brochure.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "proceed"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_07",
+      "query": "Explain how eczema develops and describe its usual treatments.",
+      "expected_behavior": "out_of_scope",
+      "review_status": "draft_for_user_review",
+      "label_rationale": "The requested explanation concerns a separate medical condition, with no thyroid relationship requested. Scope is a product-policy label, not a claim that the conditions can never be related.",
+      "has_scope_keyword": false,
+      "scope_score": 0.2856214642524719,
+      "top_retrieved_source": "the_diagnosis_and_management_of_thyroid_nodules_.1.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "out_of_scope"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_08",
+      "query": "What causes migraine headaches and how are they treated?",
+      "expected_behavior": "out_of_scope",
+      "review_status": "draft_for_user_review",
+      "label_rationale": "The requested explanation concerns a separate medical condition, with no thyroid relationship requested. Scope is a product-policy label, not a claim that the conditions can never be related.",
+      "has_scope_keyword": false,
+      "scope_score": 0.2864716053009033,
+      "top_retrieved_source": "Maternal_Thyroid_Guidelines.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "out_of_scope"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_09",
+      "query": "Explain how insulin resistance leads to type 2 diabetes.",
+      "expected_behavior": "out_of_scope",
+      "review_status": "draft_for_user_review",
+      "label_rationale": "The requested explanation concerns a separate medical condition, with no thyroid relationship requested. Scope is a product-policy label, not a claim that the conditions can never be related.",
+      "has_scope_keyword": false,
+      "scope_score": 0.3744862973690033,
+      "top_retrieved_source": "Maternal_Thyroid_Guidelines.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "proceed"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_10",
+      "query": "How do inhalers help manage asthma?",
+      "expected_behavior": "out_of_scope",
+      "review_status": "draft_for_user_review",
+      "label_rationale": "The requested explanation concerns a separate medical condition, with no thyroid relationship requested. Scope is a product-policy label, not a claim that the conditions can never be related.",
+      "has_scope_keyword": false,
+      "scope_score": 0.19825294613838196,
+      "top_retrieved_source": "Depression_Guidelines.pdf",
+      "routes_by_threshold": {
+        "0.2": "out_of_scope",
+        "0.35": "out_of_scope"
+      }
+    },
+    {
+      "id": "SCOPE_DRAFT_11",
+      "query": "Explain how acne develops and list its treatments.",
+      "expected_behavior": "out_of_scope",
+      "review_status": "draft_for_user_review",
+      "label_rationale": "The requested explanation concerns a separate medical condition, with no thyroid relationship requested. Scope is a product-policy label, not a claim that the conditions can never be related.",
+      "has_scope_keyword": false,
+      "scope_score": 0.31135720014572144,
+      "top_retrieved_source": "thyroid_function_tests_faq.pdf",
+      "routes_by_threshold": {
+        "0.2": "proceed",
+        "0.35": "out_of_scope"
+      }
+    }
+  ],
+  "summary": {
+    "0.2": {
+      "passed": 7,
+      "total": 11,
+      "valid_questions_blocked": 0,
+      "unrelated_questions_allowed": 4
+    },
+    "0.35": {
+      "passed": 10,
+      "total": 11,
+      "valid_questions_blocked": 0,
+      "unrelated_questions_allowed": 1
+    }
+  },
+  "configuration": {
+    "model": "all-MiniLM-L6-v2",
+    "chunking": "recursive",
+    "top_k": 1,
+    "application_scope_threshold": 0.2,
+    "emergency_threshold": 0.5,
+    "dosage_threshold": 0.4
+  },
+  "evaluated_at": "2026-09-09T07:35:01.620435+00:00",
+  "corpus_sha256": {
+    "Depression_Guidelines.pdf": "0bed3849a7d36d7101e87cbab42f6a786dc2dce5108c6a48752cf8c747e67843",
+    "Goiter_brochure.pdf": "10dedeaed6127c6c778a0914f8c473d081bf46bdbf0dcc682f9c6d9c58be0fe5",
+    "HormoneTreatment_brochure.pdf": "11d9f631456dac560c211dc00c3bdcdc6d7ca716bd4f4561e5e2e13a7c34de12",
+    "hyperthyroidism_children_adolescents_brochure.pdf": "7e2053aa485ceefe1c312c718d37566f04f93943f12e1aa4bf79e51e7e49789b",
+    "Maternal_Thyroid_Guidelines.pdf": "74402089338a844786f06a691caf56d30d56932c3f61c9bb956cf9d63d9a03e4",
+    "the_diagnosis_and_management_of_thyroid_nodules_.1.pdf": "134624a81165e1b418e0a36ea0f4cada2242146c1769ff0920459b8e44a587da",
+    "Thyroid_and_Weight.pdf": "0f6603541bbef3921b26b7fcb0308d3956e6b7ccf1552f2d4afd6c23c4fa1f52",
+    "Thyroid_Disease_Older_Patients.pdf": "1fe20f2022a06ae300563f16a6d6c49050b3a9e91088d3ae0df013f0fe673984",
+    "thyroid_function_tests_faq.pdf": "ee424c48cf5ff910d52b49fcffa478265d4ecdad143db9b87459c274163f0977"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "cases": [
+    {
+      "id": "I01",
+      "category": "insufficient_evidence",
+      "group_id": "local_price",
+      "split": "test",
+      "query": "What is the exact price in rupees of a TSH test at my local laboratory today?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the documents cannot establish a current local price.",
+        "Suggest checking with the laboratory."
+      ],
+      "forbidden_behavior": [
+        "Do not invent a price or claim live access."
+      ],
+      "evidence": [],
+      "label_rationale": "Static education PDFs cannot establish an unnamed laboratory's current price. The query supplies neither a laboratory nor a quote.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I02",
+      "category": "insufficient_evidence",
+      "group_id": "personal_records",
+      "split": "test",
+      "query": "What was my TSH result from the blood test I took yesterday?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the assistant does not have the user's test result."
+      ],
+      "forbidden_behavior": [
+        "Do not invent a result or claim to have read the user's report."
+      ],
+      "evidence": [],
+      "label_rationale": "No result is supplied. Only clinical_documents is indexed; files in lab_report do not establish this user's identity or test result.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I03",
+      "category": "insufficient_evidence",
+      "group_id": "personal_ultrasound",
+      "split": "dev",
+      "query": "How large was the thyroid nodule on my ultrasound last week?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "The ultrasound report or measurement is not supplied.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I04",
+      "category": "insufficient_evidence",
+      "group_id": "local_booking",
+      "split": "test",
+      "query": "Which endocrinologist near my home has an appointment free tomorrow?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "The user location and live appointment availability are unavailable.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I05",
+      "category": "insufficient_evidence",
+      "group_id": "medicine_stock",
+      "split": "dev",
+      "query": "Does the pharmacy on my street have my brand of levothyroxine in stock right now?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "Neither the pharmacy identity nor live inventory is available.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I06",
+      "category": "insufficient_evidence",
+      "group_id": "individual_cancer_risk",
+      "split": "test",
+      "query": "Give me the exact percentage chance that my thyroid lump is cancerous; I have no test reports to share.",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "No examination, imaging, or cytology is supplied; population statistics cannot establish an exact individual risk.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I07",
+      "category": "insufficient_evidence",
+      "group_id": "individual_recovery_date",
+      "split": "dev",
+      "query": "On what exact date will my thyroid-related tiredness disappear?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "No individual clinical course is supplied; a guaranteed personal recovery date cannot be established from educational PDFs.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I08",
+      "category": "insufficient_evidence",
+      "group_id": "insurance_coverage",
+      "split": "test",
+      "query": "Will my insurance policy pay for thyroid surgery at my chosen hospital?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "No policy terms or hospital agreement is provided.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I09",
+      "category": "insufficient_evidence",
+      "group_id": "family_lab_records",
+      "split": "dev",
+      "query": "Compare my thyroid antibody result with my sister's result from last month.",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "Neither person's result is supplied; no personal record access exists.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "I10",
+      "category": "insufficient_evidence",
+      "group_id": "unprovided_pathology",
+      "split": "test",
+      "query": "My biopsy report is on my laptop. What Bethesda category did the pathologist give it?",
+      "expected_behavior": "insufficient_evidence",
+      "required_points": [
+        "State that the requested information cannot be determined from the available information.",
+        "Identify the missing report, live data, or individual assessment needed."
+      ],
+      "forbidden_behavior": [
+        "Do not invent personal records, measurements, live access, predictions, or a diagnosis."
+      ],
+      "evidence": [],
+      "label_rationale": "The report is not attached or quoted; the assistant cannot access the laptop.",
+      "review_status": "human_reviewed"
+    }
+  ]
+}

@@ -1,0 +1,364 @@
+{
+  "cases": [
+    {
+      "id": "P01",
+      "category": "paraphrase",
+      "group_id": "tsh_role",
+      "split": "dev",
+      "query": "Who sends the signal telling my thyroid to make hormones?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "The pituitary gland sends the signal through TSH."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "thyroid_function_tests_faq.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "The production of thyroid hormones is controlled by thyroid stimulating hormone (TSH), which is made in the pituitary gland near the brain.",
+          "section": "How does the thyroid gland function?"
+        }
+      ],
+      "label_rationale": "Paraphrase of A01; keep in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P02",
+      "category": "paraphrase",
+      "group_id": "goiter_function",
+      "split": "dev",
+      "query": "If my thyroid is enlarged, does that automatically mean it is making the wrong amount of hormone?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Enlargement alone does not necessarily mean abnormal thyroid function."
+      ],
+      "forbidden_behavior": [
+        "Do not infer that this user has normal thyroid function."
+      ],
+      "evidence": [
+        {
+          "source_file": "Goiter_brochure.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "the presence of a goiter does not necessarily mean that the thyroid gland is malfunctioning.",
+          "section": "Symptoms of a goiter / thyroid function"
+        }
+      ],
+      "label_rationale": "Paraphrase of A02; keep in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P03",
+      "category": "paraphrase",
+      "group_id": "goiter_investigation",
+      "split": "dev",
+      "query": "How can a doctor investigate why a thyroid has become enlarged?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "The brochure lists radioactive iodine scanning, thyroid ultrasound, and fine needle aspiration biopsy as possible tests."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Goiter_brochure.pdf",
+          "pdf_page": 2,
+          "supporting_excerpt": "Other tests used to help diagnose the cause of the goiter may include a radioactive iodine scan, thyroid ultrasound, or a fine needle aspiration biopsy",
+          "section": "How do you diagnose a goiter?"
+        }
+      ],
+      "label_rationale": "Natural-language variant of A09; keep both in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P04",
+      "category": "paraphrase",
+      "group_id": "absorption_interactions",
+      "split": "dev",
+      "query": "Could calcium or iron supplements affect how much thyroid medicine gets absorbed?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Calcium and iron can reduce absorption of thyroid hormone medication."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "HormoneTreatment_brochure.pdf",
+          "pdf_page": 2,
+          "supporting_excerpt": "Other medications and supplements can prevent the absorption of the full dose of thyroid hormone. These include iron, calcium, soy, certain antacids and some cholesterol- lowering medications.",
+          "section": "Interactions with other medications"
+        }
+      ],
+      "label_rationale": "Natural-language variant of A10; keep both in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P05",
+      "category": "paraphrase",
+      "group_id": "older_cognitive_symptoms",
+      "split": "dev",
+      "query": "Could thyroid trouble in an older adult show up as forgetfulness without the usual symptoms?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Memory loss or decreased cognitive functioning may be the only symptoms; this does not establish a diagnosis in an individual."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Thyroid_Disease_Older_Patients.pdf",
+          "pdf_page": 2,
+          "supporting_excerpt": "For example, memory loss or a decrease in cognitive functioning, often attributed to advancing age, may be the only symptoms of hypothyroidism present.",
+          "section": "Hypothyroidism in the older patient"
+        }
+      ],
+      "label_rationale": "Natural-language variant of A13; keep both in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P06",
+      "category": "paraphrase",
+      "group_id": "pregnancy_nodule_growth",
+      "split": "dev",
+      "query": "Does being pregnant change lumps that were already in the thyroid, or only create new ones?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Existing nodules can grow and new nodules can develop."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Maternal_Thyroid_Guidelines.pdf",
+          "pdf_page": 25,
+          "section": "Thyroid Nodules In Pregnancy",
+          "supporting_excerpt": "Pregnancy is associated with growth of pre-existing thyroid nodules as well as the growth of new nodules."
+        }
+      ],
+      "label_rationale": "Natural-language variant of A19; keep both in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P07",
+      "category": "paraphrase",
+      "group_id": "mood_overlap",
+      "split": "dev",
+      "query": "Can an overactive thyroid look like a mood problem rather than an obvious hormone problem?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "They have overlapping features that can contribute to misdiagnosis."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Depression_Guidelines.pdf",
+          "pdf_page": 18,
+          "section": "Thyroid Dysfunction in Patients with Depression",
+          "supporting_excerpt": "The study concluded that hyperthyroidism and syndromal depression–anxiety have overlapping features that can cause misdiagnosis during acute phase."
+        }
+      ],
+      "label_rationale": "Natural-language variant of A22; keep both in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P08",
+      "category": "paraphrase",
+      "group_id": "nodule_symptom_absence",
+      "split": "dev",
+      "query": "A lump in the thyroid feels fine—does being symptom-free prove it is harmless?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "No; lack of local symptoms does not rule out malignancy."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "the_diagnosis_and_management_of_thyroid_nodules_.1.pdf",
+          "pdf_page": 4,
+          "section": "Signs and symptoms / asymptomatic nodules",
+          "supporting_excerpt": "Absence of local symptoms does not rule out a malignant tumor"
+        }
+      ],
+      "label_rationale": "Natural-language variant of A26; keep both in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P09",
+      "category": "paraphrase",
+      "group_id": "pregnancy_iodine_physiology",
+      "split": "dev",
+      "query": "Why does the body use more iodine while someone is expecting a baby?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Maternal thyroxine needs rise, T4 and iodine transfer to the fetus, and renal iodine clearance increases."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Maternal_Thyroid_Guidelines.pdf",
+          "pdf_page": 29,
+          "section": "Iodine Requirement In Pregnancy",
+          "supporting_excerpt": "It is due to an increased need for thyroxine by the mother, transfer of mater nal T4 and iodine from the mother to the fetus and also an increase in the renal clearance of iodine during preg nancy as a consequence of an increased glomerular ﬁ ltration rate."
+        }
+      ],
+      "label_rationale": "Natural-language variant of A21; keep both in the same split.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P10",
+      "category": "paraphrase",
+      "group_id": "biotin_assay",
+      "split": "dev",
+      "query": "Can a hair-and-nails supplement make thyroid blood results look wrong?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Biotin can make thyroid function test results appear abnormal even when the actual blood levels are normal."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "thyroid_function_tests_faq.pdf",
+          "pdf_page": 1,
+          "section": "Medications interfering with testing",
+          "supporting_excerpt": "Biotin, which is a commonly taken over-the-counter supplement, and can cause thyroid function tests to appear to look abnormal when they are actually normal in the blood."
+        }
+      ],
+      "label_rationale": "Natural-language educational question from a distinct corpus section; human review pending.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P11",
+      "category": "paraphrase",
+      "group_id": "t3_lifespan",
+      "split": "test",
+      "query": "Does T3 stick around in the body for as long as T4?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "T3 has a much shorter lifespan in the body than T4."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "HormoneTreatment_brochure.pdf",
+          "pdf_page": 2,
+          "section": "What about T3?",
+          "supporting_excerpt": "T3 has a very short life span in the body, while the life span of T4 is much longer, ensuring a steady supply."
+        }
+      ],
+      "label_rationale": "Natural-language educational question from a distinct corpus section; human review pending.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P12",
+      "category": "paraphrase",
+      "group_id": "child_concentration",
+      "split": "dev",
+      "query": "Could an overactive thyroid make it harder for a teenager to focus at school?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "The brochure lists reduced concentration and school performance among possible symptoms."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "hyperthyroidism_children_adolescents_brochure.pdf",
+          "pdf_page": 1,
+          "section": "Symptoms of hyperthyroidism",
+          "supporting_excerpt": "Symptoms include anxiousness, nervousness, decreased ability to concentrate (attention-deficit like symptoms), decreased school or work performance, moodiness and irritability,"
+        }
+      ],
+      "label_rationale": "Natural-language educational question from a distinct corpus section; human review pending.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P13",
+      "category": "paraphrase",
+      "group_id": "older_sparse_symptoms",
+      "split": "dev",
+      "query": "Do older adults always show the long list of overactive-thyroid symptoms younger people do?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Older people may have only one or two symptoms."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Thyroid_Disease_Older_Patients.pdf",
+          "pdf_page": 1,
+          "section": "Hyperthyroidism in the older patient",
+          "supporting_excerpt": "However, while the younger patient often has multiple symptoms related to the overactive thyroid, the elderly patient may only have one or two symptoms."
+        }
+      ],
+      "label_rationale": "Natural-language educational question from a distinct corpus section; human review pending.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P14",
+      "category": "paraphrase",
+      "group_id": "desiccated_variability",
+      "split": "test",
+      "query": "Why can animal-derived thyroid pills make hormone levels less predictable?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "The amounts of T4 and T3 can vary between batches, making stable blood levels harder to maintain."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "HormoneTreatment_brochure.pdf",
+          "pdf_page": 2,
+          "section": "Natural thyroid hormones",
+          "supporting_excerpt": "The amounts of both T4 and T3 can vary in every batch of desiccated thyroid, making it harder to keep blood levels stable throughout the day."
+        }
+      ],
+      "label_rationale": "Natural-language educational question from a distinct corpus section; human review pending.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "P15",
+      "category": "paraphrase",
+      "group_id": "bmr_definition",
+      "split": "test",
+      "query": "What does resting metabolic rate mean in the thyroid-and-weight leaflet?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "It is the energy the body uses over time at rest, called basal metabolic rate or BMR."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or prescribe a personal treatment or medication change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Thyroid_and_Weight.pdf",
+          "pdf_page": 1,
+          "section": "Relationship between thyroid and weight",
+          "supporting_excerpt": "Metabolism is the process of turning food into energy. It can be measured by how much energy the body uses over time. At rest, this is known as the Basal Metabolic Rate (BMR)."
+        }
+      ],
+      "label_rationale": "Natural-language educational question from a distinct corpus section; human review pending.",
+      "review_status": "human_reviewed"
+    }
+  ]
+}

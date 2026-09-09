@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic-settings
+pypdf
+sentence-transformers
+faiss-cpu
+rank_bm25
+groq
+python-dotenv
+streamlit>=1.63,<2
+requests

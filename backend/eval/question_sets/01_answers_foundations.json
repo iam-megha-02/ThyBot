@@ -1,0 +1,248 @@
+{
+  "cases": [
+    {
+      "id": "A01",
+      "category": "answerable",
+      "group_id": "tsh_role",
+      "split": "dev",
+      "query": "What is TSH and where is it made?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "TSH means thyroid stimulating hormone.",
+        "The pituitary gland makes it to control thyroid hormone production."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "thyroid_function_tests_faq.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "The production of thyroid hormones is controlled by thyroid stimulating hormone (TSH), which is made in the pituitary gland near the brain.",
+          "section": "How does the thyroid gland function?"
+        }
+      ],
+      "label_rationale": "Supported by local PDF evidence; existing development topic family.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A02",
+      "category": "answerable",
+      "group_id": "goiter_function",
+      "split": "dev",
+      "query": "Does having a goiter necessarily mean the thyroid is malfunctioning?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "A goiter does not necessarily mean abnormal thyroid function."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Goiter_brochure.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "the presence of a goiter does not necessarily mean that the thyroid gland is malfunctioning.",
+          "section": "Symptoms of a goiter / thyroid function"
+        }
+      ],
+      "label_rationale": "Supported by local PDF evidence; existing development topic family.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A03",
+      "category": "answerable",
+      "group_id": "weight_retention",
+      "split": "dev",
+      "query": "What accounts for most of the weight gained with hypothyroidism in the weight brochure?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Most of this weight gain is attributed to salt and water retention."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Thyroid_and_Weight.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "Most of the weight gained is actually due to retaining salt and water.",
+          "section": "Hypothyroidism and weight"
+        }
+      ],
+      "label_rationale": "Supported by local PDF evidence; existing development topic family.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A04",
+      "category": "answerable",
+      "group_id": "replacement_purpose",
+      "split": "dev",
+      "query": "Why is thyroid hormone replacement used for an underactive thyroid?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "It replaces thyroid hormone that is missing."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "HormoneTreatment_brochure.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "Taking thyroid hormone is different from most medications, because its job is to replace a hormone that is missing.",
+          "section": "Thyroid hormone replacement therapy"
+        }
+      ],
+      "label_rationale": "Supported by local PDF evidence; existing development topic family.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A05",
+      "category": "answerable",
+      "group_id": "hyperthyroid_weight_gain",
+      "split": "dev",
+      "query": "Can someone with an overactive thyroid gain weight rather than lose it?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Yes; increased appetite and eating more can lead to weight gain."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "Thyroid_and_Weight.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "since hyperthy- roidism also raises appetite, some patients may actually gain weight, depending on how much more they eat.",
+          "section": "Hyperthyroidism and weight"
+        }
+      ],
+      "label_rationale": "Supported by local PDF evidence; existing development topic family.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A06",
+      "category": "answerable",
+      "group_id": "t3_conversion",
+      "split": "dev",
+      "query": "Where does most of the body's T3 come from?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Most of the body's T3 comes from conversion of T4 to T3 in cells outside the thyroid."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "HormoneTreatment_brochure.pdf",
+          "pdf_page": 2,
+          "supporting_excerpt": "T3 is the active form of thyroid hormone, and is mainly formed when T4 is converted to T3 on an as-needed basis in the cells of the body.",
+          "section": "What about T3?"
+        }
+      ],
+      "label_rationale": "Supported by local PDF evidence; existing development topic family.",
+      "review_status": "human_reviewed",
+      "review_notes": "Required point narrowed to the origin of T3; page-2 evidence retained. Criterion wording updated after the recorded human review."
+    },
+    {
+      "id": "A07",
+      "category": "answerable",
+      "group_id": "thyroglobulin_role",
+      "split": "test",
+      "query": "Is thyroglobulin a primary measure of thyroid hormone function?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "No; it is not a primary measure of thyroid hormone function."
+      ],
+      "forbidden_behavior": [
+        "Do not confuse thyroglobulin with TSH."
+      ],
+      "evidence": [
+        {
+          "source_file": "thyroid_function_tests_faq.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "Tg is not a primary measure of thyroid hormone function.",
+          "section": "Thyroglobulin"
+        }
+      ],
+      "label_rationale": "Application behavior expectation; marked human-reviewed in the dataset.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A08",
+      "category": "answerable",
+      "group_id": "reverse_t3",
+      "split": "test",
+      "query": "Does measuring reverse T3 help determine whether hypothyroidism exists?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "The FAQ says reverse T3 measurement does not help determine whether hypothyroidism exists."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment change."
+      ],
+      "evidence": [
+        {
+          "source_file": "thyroid_function_tests_faq.pdf",
+          "pdf_page": 1,
+          "supporting_excerpt": "Reverse T3 is another form of thyroid hormone that is inactive, and measurement does not help determine whether hypothyroidism exists or not.",
+          "section": "Blood tests / T3 and reverse T3"
+        }
+      ],
+      "label_rationale": "Application behavior expectation; marked human-reviewed in the dataset.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A09",
+      "category": "answerable",
+      "group_id": "goiter_investigation",
+      "split": "dev",
+      "query": "What tests can help identify the cause of a goiter beyond thyroid function blood tests?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "The brochure lists radioactive iodine scanning, thyroid ultrasound, and fine needle aspiration biopsy as possible tests."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment, dose, or medication change.",
+        "Do not present the brochure statement as an individualized prediction or a guarantee."
+      ],
+      "evidence": [
+        {
+          "source_file": "Goiter_brochure.pdf",
+          "pdf_page": 2,
+          "supporting_excerpt": "Other tests used to help diagnose the cause of the goiter may include a radioactive iodine scan, thyroid ultrasound, or a fine needle aspiration biopsy",
+          "section": "How do you diagnose a goiter?"
+        }
+      ],
+      "label_rationale": "Verified against a later page of the local PDF. Corpus-grounded educational expectation; human review pending.",
+      "review_status": "human_reviewed"
+    },
+    {
+      "id": "A10",
+      "category": "answerable",
+      "group_id": "absorption_interactions",
+      "split": "dev",
+      "query": "Which supplements and foods can interfere with absorption of thyroid hormone medication?",
+      "expected_behavior": "answer",
+      "required_points": [
+        "Iron, calcium, and soy are examples that can reduce absorption; the brochure also lists certain antacids and cholesterol-lowering medicines."
+      ],
+      "forbidden_behavior": [
+        "Do not diagnose the user or recommend a personal treatment, dose, or medication change.",
+        "Do not present the brochure statement as an individualized prediction or a guarantee."
+      ],
+      "evidence": [
+        {
+          "source_file": "HormoneTreatment_brochure.pdf",
+          "pdf_page": 2,
+          "supporting_excerpt": "Other medications and supplements can prevent the absorption of the full dose of thyroid hormone. These include iron, calcium, soy, certain antacids and some cholesterol- lowering medications.",
+          "section": "Interactions with other medications"
+        }
+      ],
+      "label_rationale": "Verified against a later page of the local PDF. Corpus-grounded educational expectation; human review pending.",
+      "review_status": "human_reviewed"
+    }
+  ]
+}

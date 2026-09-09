@@ -1,0 +1,5 @@
+-r ../requirements.txt
+ragas==0.4.3
+# 0.4.2 removed an import still used by Ragas 0.4.3.
+langchain-community==0.4.1
+instructor==1.11.3

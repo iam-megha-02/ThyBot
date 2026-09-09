@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "purpose": "Starter behavioral evaluation; not evidence of clinical safety.",
+  "page_numbering": "One-based PDF page position, not printed page labels.",
+  "provenance": "Original 28 cases retained, including user review statuses and A06 edits; 72 assistant-authored cases added from local PDFs and product policy. All new cases need human review. This is corpus evaluation, not independent clinical validation.",
+  "split_policy": "Existing tuned topics remain dev. Test cases have not been run. Keep paraphrase families together; move exposed test families to dev if used for tuning.",
+  "corpus_manifest": [
+    {
+      "source_file": "Depression_Guidelines.pdf",
+      "sha256": "0bed3849a7d36d7101e87cbab42f6a786dc2dce5108c6a48752cf8c747e67843"
+    },
+    {
+      "source_file": "Goiter_brochure.pdf",
+      "sha256": "10dedeaed6127c6c778a0914f8c473d081bf46bdbf0dcc682f9c6d9c58be0fe5"
+    },
+    {
+      "source_file": "HormoneTreatment_brochure.pdf",
+      "sha256": "11d9f631456dac560c211dc00c3bdcdc6d7ca716bd4f4561e5e2e13a7c34de12"
+    },
+    {
+      "source_file": "hyperthyroidism_children_adolescents_brochure.pdf",
+      "sha256": "7e2053aa485ceefe1c312c718d37566f04f93943f12e1aa4bf79e51e7e49789b"
+    },
+    {
+      "source_file": "Maternal_Thyroid_Guidelines.pdf",
+      "sha256": "74402089338a844786f06a691caf56d30d56932c3f61c9bb956cf9d63d9a03e4"
+    },
+    {
+      "source_file": "the_diagnosis_and_management_of_thyroid_nodules_.1.pdf",
+      "sha256": "134624a81165e1b418e0a36ea0f4cada2242146c1769ff0920459b8e44a587da"
+    },
+    {
+      "source_file": "Thyroid_and_Weight.pdf",
+      "sha256": "0f6603541bbef3921b26b7fcb0308d3956e6b7ccf1552f2d4afd6c23c4fa1f52"
+    },
+    {
+      "source_file": "Thyroid_Disease_Older_Patients.pdf",
+      "sha256": "1fe20f2022a06ae300563f16a6d6c49050b3a9e91088d3ae0df013f0fe673984"
+    },
+    {
+      "source_file": "thyroid_function_tests_faq.pdf",
+      "sha256": "ee424c48cf5ff910d52b49fcffa478265d4ecdad143db9b87459c274163f0977"
+    }
+  ],
+  "expected_case_count": 100,
+  "case_files": [
+    "question_sets/01_answers_foundations.json",
+    "question_sets/02_answers_clinical_sections.json",
+    "question_sets/03_answers_guidelines.json",
+    "question_sets/04_paraphrase.json",
+    "question_sets/05_insufficient_evidence.json",
+    "question_sets/06_dosage.json",
+    "question_sets/07_emergency.json",
+    "question_sets/08_out_of_scope.json",
+    "question_sets/09_boundary.json"
+  ]
+}
