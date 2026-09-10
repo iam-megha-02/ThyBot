@@ -6,6 +6,8 @@
 
 ThyBot answers questions about thyroid health using real medical documents, it doesn't just make things up. If you ask something outside that scope, something that sounds like a medical emergency, or something like "what dose should I take," it won't try to answer. It'll point you somewhere safer instead.
 
+Live Demo: https://thybot-2026.streamlit.app/
+
 ## How it works
 
 Think of it as three steps:
