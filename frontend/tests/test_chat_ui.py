@@ -1,4 +1,4 @@
-"""Regression coverage for Streamlit reruns, using the real UI and a mocked API.
+"""Regression coverage for Streamlit reruns, using the real UI and a mocked assistant.
 
 Run: python -m unittest discover -s frontend/tests
 """
@@ -7,7 +7,6 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-import requests
 from streamlit.testing.v1 import AppTest
 
 FRONTEND = Path(__file__).resolve().parents[1]
@@ -16,8 +15,8 @@ sys.path.insert(0, str(FRONTEND))
 
 class ChatUITests(unittest.TestCase):
     def setUp(self):
-        self.health = patch('api_client.check_backend_health', return_value={'status': 'ok'})
-        self.ask = patch('api_client.ask_question', return_value={
+        self.health = patch('assistant.is_ready', return_value=True)
+        self.ask = patch('assistant.ask_question', return_value={
             'answer': '## An explanation\n\nSupported **information**.',
             'sources': ['reference.pdf'], 'disclaimer': 'Educational information.',
             'guardrail': None,
@@ -48,8 +47,8 @@ class ChatUITests(unittest.TestCase):
         self.assertEqual(self.api.call_count, 2)
         self.assertEqual(len(self.app.session_state.messages), 2)
 
-    def test_connection_error_does_not_block_retry(self):
-        self.api.side_effect = requests.ConnectionError('internal address must not appear')
+    def test_unexpected_error_does_not_block_retry(self):
+        self.api.side_effect = RuntimeError('internal address must not appear')
         self.app.button(key='suggestion_goiter').click().run()
         self.assertIsNone(self.app.session_state.pending_submission)
         self.assertTrue(self.app.session_state.messages[-1]['request_error'])

@@ -140,7 +140,7 @@ async def score_saved_answers(args):
     sys.path.insert(0, str(HERE.parent))
     from app.core.config import settings
     if not settings.groq_api_key:
-        raise SystemExit('GROQ_API_KEY is not configured in backend/.env.')
+        raise SystemExit('GROQ_API_KEY is not configured in .env.')
     report['ragas_version'] = version('ragas')
     embeddings = (HuggingFaceEmbeddings(model=config['embedding_model'], use_api=False)
                   if 'answer_relevancy' in args.metrics else None)

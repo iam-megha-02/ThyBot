@@ -1,8 +1,7 @@
 import logging
 from pathlib import Path
-import requests
 import streamlit as st
-from api_client import ask_question, check_backend_health
+from assistant import ask_question, is_ready
 from chat_state import clear_chat, initialize_state, queue_question, submit_composer
 from components import (apply_theme, render_header, render_intro, render_message,
                         render_suggestions, render_typing, DISCLAIMER)
@@ -13,17 +12,9 @@ st.set_page_config(page_title="ThyBot", page_icon=str(LOGO), layout="wide")
 initialize_state()
 apply_theme(True)
 
-@st.cache_data(ttl=30, show_spinner=False)
-def backend_available():
-    try:
-        check_backend_health()
-        return True
-    except requests.exceptions.RequestException:
-        return False
-
 pending = st.session_state.pending_submission
 busy = pending is not None
-render_header(backend_available(), busy, clear_chat)
+render_header(is_ready(), busy, clear_chat)
 if not st.session_state.messages:
     render_intro()
 for index, message in enumerate(st.session_state.messages):
@@ -45,9 +36,9 @@ if pending:
             render_typing()
         try:
             data = ask_question(pending["question"])
-        except requests.exceptions.RequestException:
+        except Exception:
             logging.getLogger(__name__).exception("Chat request failed")
-            data = {"answer": "I couldn't connect just now. Please try again in a moment.",
+            data = {"answer": "Something went wrong just now. Please try again in a moment.",
                     "sources": [], "disclaimer": "", "guardrail": None, "request_error": True}
         finally:
             st.session_state.pending_submission = None

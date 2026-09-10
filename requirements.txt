@@ -1,5 +1,3 @@
-fastapi
-uvicorn
 pydantic-settings
 pypdf
 sentence-transformers
@@ -8,4 +6,3 @@ rank_bm25
 groq
 python-dotenv
 streamlit>=1.63,<2
-requests

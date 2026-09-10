@@ -1,49 +1,60 @@
 # ThyBot
 
-A thyroid health Q&A assistant. It answers questions using only what's actually written in a set of clinical PDFs (guidelines and patient brochures).It doesn't make things up, and it refuses to give personal medical advice like dosage changes.
+ThyBot answers questions about thyroid health using real medical documents — it doesn't just make things up. If you ask something outside that scope, something that sounds like a medical emergency, or something like "what dose should I take," it won't try to answer. It'll point you somewhere safer instead.
 
-FastAPI backend and Streamlit chat frontend.
+It's a single Streamlit app. No separate backend server to run or deploy.
 
 ## How it works
 
-1. **Retrieval** - nine clinical PDFs are chunked and indexed two ways: dense (sentence-transformer embeddings + FAISS) and sparse (BM25). Results from both are combined with reciprocal rank fusion.
-2. **Guardrails** - before anything reaches the LLM, the question is checked for:
-   - **Emergency** language (chest pain, trouble breathing, suicidal ideation, etc.) → redirected to emergency services, not answered.
-   - **Personal dosage** requests ("should I increase my dose?") → refused, redirected to a doctor.
-   - **Out-of-scope** questions (nothing to do with the thyroid) → refused.
-   
-   These use keyword matching plus a semantic similarity check against reference phrases, so paraphrased versions still get caught.
-3. **Generation** - if a question passes the guardrails, the retrieved chunks and the question go to an LLM (via Groq) to produce a grounded answer with sources.
+Think of it as three steps:
 
-See [backend/eval/README.md](backend/eval/README.md) for how all of this is tested, and [backend/eval/results/BASELINE.md](backend/eval/results/BASELINE.md) for the latest results.
+1. **Find relevant text (retrieval)** — Nine thyroid-related PDFs are split into small chunks and searched two ways: a "meaning-based" search (dense embeddings + FAISS) and a "keyword-based" search (BM25). Their results get merged using a ranking trick called reciprocal rank fusion, so the best chunks from either method rise to the top.
+2. **Safety checks (guardrails)** — Before any question reaches the AI model, it's checked for:
+   - **Emergency language** (chest pain, can't breathe, thoughts of self-harm) → tells you to get real help immediately, no AI answer.
+   - **Personal dosage questions** ("should I increase my dose?") → refused, redirected to a doctor.
+   - **Anything unrelated to the thyroid** → refused, politely.
+   
+   These checks use keyword matching plus a semantic similarity check (comparing what your question *means* to a set of example phrases), so a reworded version of the same request still gets caught.
+3. **Answer generation** — If a question passes the checks, the retrieved text chunks and your question go to an LLM (via Groq), which writes an answer grounded only in that text, plus a list of sources.
+
+Curious how well this actually works? See [backend/eval/README.md](backend/eval/README.md) for how it's tested, and [backend/eval/results/BASELINE.md](backend/eval/results/BASELINE.md) for the results.
+
+## Tech stack
+
+- **UI**: [Streamlit](https://streamlit.io/)
+- **PDF parsing**: [pypdf](https://pypdf.readthedocs.io/)
+- **Meaning-based search**: [sentence-transformers](https://www.sbert.net/) for embeddings + [FAISS](https://github.com/facebookresearch/faiss) for the vector index
+- **Keyword-based search**: [rank_bm25](https://github.com/dorianbrown/rank_bm25)
+- **LLM**: [Groq](https://groq.com/) (fast inference, currently `qwen/qwen3.8-27b` for answers)
+- **Config**: [pydantic-settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) + python-dotenv, reading a `.env` file
+- **Answer-quality evaluation**: [Ragas](https://docs.ragas.io/) (only needed if you run the eval suite, not the app itself)
 
 ## Project layout
 
 ```
 backend/
   app/
-    api/            FastAPI routes (/chat, /health)
-    services/       retrieval, chunking, guardrails, LLM calls
-    schemas/        request/response models
-    core/config.py  settings (reads backend/.env)
-  eval/             question sets + evaluation runner (see its own README)
+    services/        the actual logic: retrieval, chunking, guardrails, calling the LLM
+    schemas/          one shared data shape (a "Chunk")
+    core/config.py    reads settings/secrets from .env in the project root
+  eval/               test questions + the script that runs evaluations (see its own README)
 frontend/
-  app.py            Streamlit chat UI
-  api_client.py     talks to the backend
+  app.py              the Streamlit app — what you see and click
+  assistant.py        glue code: guardrails -> retrieval -> generation, in the same process
 data/
-  clinical_documents/   the source PDFs
+  clinical_documents/   the 9 source PDFs everything is grounded in
 ```
 
 ## Setup
 
-Requires Python 3.11+ and a [Groq](https://console.groq.com/) API key.
+You'll need Python 3.11+ and a free [Groq](https://console.groq.com/) API key.
 
 ```powershell
 python -m venv venv
 .\venv\Scripts\pip install -r requirements.txt
 ```
 
-Create `backend/.env`:
+Then create a `.env` file in the project root with your key:
 
 ```
 GROQ_API_KEY=your-key-here
@@ -51,26 +62,18 @@ GROQ_API_KEY=your-key-here
 
 ## Running it
 
-Start the backend from `backend/` (loads the PDFs and builds the indexes on startup, so the first run takes a bit):
+One command, from the project root:
 
 ```powershell
-cd backend
-..\venv\Scripts\uvicorn app.main:app --reload
+.\venv\Scripts\streamlit run frontend/app.py
 ```
 
-Start the frontend in a separate terminal from `frontend/`:
-
-```powershell
-cd frontend
-..\venv\Scripts\streamlit run app.py
-```
-
-The frontend talks to `http://127.0.0.1:8000` by default — set `THYBOT_BACKEND_URL` if the backend is elsewhere.
+The first run takes a bit longer, it's reading all the PDFs and building the search indexes. After that, it keeps everything in memory, so it's fast.
 
 ## Evaluation
 
-There's a full evaluation harness under `backend/eval/` with 100 hand-reviewed questions covering answerable questions, paraphrases, dosage requests, emergencies, out-of-scope questions, and boundary cases. It checks retrieval accuracy, guardrail routing, and answer quality (via Ragas). Details and commands are in [backend/eval/README.md](backend/eval/README.md).
+There's a full test suite under `backend/eval/` - 100 questions, written and reviewed by hand, covering normal questions, reworded questions, dosage requests, emergencies, off-topic questions, and tricky edge cases. It checks whether retrieval finds the right document, whether guardrails route things correctly, and how good the generated answers are (using Ragas). Details and commands are in [backend/eval/README.md](backend/eval/README.md).
 
 ## Disclaimer
 
-This is an educational tool built on public clinical documents. It is not a substitute for professional medical advice, and it will not act as one — that's the point of the guardrails.
+This is a learning project built on public clinical documents, not a real medical tool. It's not a substitute for talking to an actual doctor, the guardrails exist specifically to make sure it never tries to be one.

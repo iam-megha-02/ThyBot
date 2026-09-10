@@ -40,12 +40,12 @@ def render_header(online, busy, on_clear):
                 st.caption("ThyBot cannot diagnose conditions, recommend personal medication changes, "
                            "or provide emergency care.")
                 st.markdown("**Privacy**")
-                st.caption("Questions are sent to the application backend and its AI provider. "
+                st.caption("Questions are sent to the AI provider that generates the answer. "
                            "Avoid sharing identifying information. New chat clears the on-screen conversation.")
-                st.caption("Service connected" if online else "Service unavailable — please try again shortly.")
+                st.caption("Ready to answer" if online else "AI provider not configured — check GROQ_API_KEY.")
     if not online:
         st.markdown('<div class="connection-notice" role="status">'
-                    '<span aria-hidden="true">○</span> The service is unavailable right now. '
+                    '<span aria-hidden="true">○</span> The AI provider isn\'t configured right now. '
                     'You can still read your conversation.</div>', unsafe_allow_html=True)
 
 
