@@ -1,6 +1,6 @@
 # ThyBot
 
-ThyBot answers questions about thyroid health using real medical documents — it doesn't just make things up. If you ask something outside that scope, something that sounds like a medical emergency, or something like "what dose should I take," it won't try to answer. It'll point you somewhere safer instead.
+ThyBot answers questions about thyroid health using real medical documents, it doesn't just make things up. If you ask something outside that scope, something that sounds like a medical emergency, or something like "what dose should I take," it won't try to answer. It'll point you somewhere safer instead.
 
 It's a single Streamlit app. No separate backend server to run or deploy.
 
@@ -8,14 +8,14 @@ It's a single Streamlit app. No separate backend server to run or deploy.
 
 Think of it as three steps:
 
-1. **Find relevant text (retrieval)** — Nine thyroid-related PDFs are split into small chunks and searched two ways: a "meaning-based" search (dense embeddings + FAISS) and a "keyword-based" search (BM25). Their results get merged using a ranking trick called reciprocal rank fusion, so the best chunks from either method rise to the top.
-2. **Safety checks (guardrails)** — Before any question reaches the AI model, it's checked for:
+1. **Find relevant text (retrieval)** - Nine thyroid-related PDFs are split into small chunks and searched two ways: a "meaning-based" search (dense embeddings + FAISS) and a "keyword-based" search (BM25). Their results get merged using a ranking trick called reciprocal rank fusion, so the best chunks from either method rise to the top.
+2. **Safety checks (guardrails)** - Before any question reaches the AI model, it's checked for:
    - **Emergency language** (chest pain, can't breathe, thoughts of self-harm) → tells you to get real help immediately, no AI answer.
    - **Personal dosage questions** ("should I increase my dose?") → refused, redirected to a doctor.
    - **Anything unrelated to the thyroid** → refused, politely.
    
    These checks use keyword matching plus a semantic similarity check (comparing what your question *means* to a set of example phrases), so a reworded version of the same request still gets caught.
-3. **Answer generation** — If a question passes the checks, the retrieved text chunks and your question go to an LLM (via Groq), which writes an answer grounded only in that text, plus a list of sources.
+3. **Answer generation** - If a question passes the checks, the retrieved text chunks and your question go to an LLM (via Groq), which writes an answer grounded only in that text, plus a list of sources.
 
 Curious how well this actually works? See [backend/eval/README.md](backend/eval/README.md) for how it's tested, and [backend/eval/results/BASELINE.md](backend/eval/results/BASELINE.md) for the results.
 
@@ -39,7 +39,7 @@ backend/
     core/config.py    reads settings/secrets from .env in the project root
   eval/               test questions + the script that runs evaluations (see its own README)
 frontend/
-  app.py              the Streamlit app — what you see and click
+  app.py              the Streamlit app - what you see and click
   assistant.py        glue code: guardrails -> retrieval -> generation, in the same process
 data/
   clinical_documents/   the 9 source PDFs everything is grounded in
