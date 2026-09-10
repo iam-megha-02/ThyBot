@@ -1,8 +1,10 @@
-# ThyBot
+<p align="center">
+  <img src="frontend/assets/logo.png" alt="ThyBot logo" width="120">
+</p>
+
+<h1 align="center">ThyBot</h1>
 
 ThyBot answers questions about thyroid health using real medical documents, it doesn't just make things up. If you ask something outside that scope, something that sounds like a medical emergency, or something like "what dose should I take," it won't try to answer. It'll point you somewhere safer instead.
-
-It's a single Streamlit app. No separate backend server to run or deploy.
 
 ## How it works
 
